@@ -16,7 +16,8 @@ Route::get('/', function () {
 });
 
 Route::get('user/validate/{auth}', function (App\UserSip $sip) {
-    return $sip;
+	$setting = App\Setting::get(['web_socket_url','outbound_url','ice_servers']);
+	return array('sip' => $sip, 'setting' => $setting);
 });
 
 Auth::routes();
@@ -29,3 +30,6 @@ Route::get('/add-user', 'UserController@create')->name('add-user');
 Route::post('/add-user-post', 'UserController@store')->name('add-user-post');
 Route::get('/edit-user/{user}', 'UserController@edit')->name('edit-user');
 Route::post('/edit-user-post/{user}', 'UserController@update')->name('edit-user-post');
+
+Route::get('/settings', 'SettingController@create')->name('add-setting');
+Route::post('/settings/save', 'SettingController@store')->name('add-setting-post');

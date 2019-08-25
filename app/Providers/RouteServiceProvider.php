@@ -28,7 +28,7 @@ class RouteServiceProvider extends ServiceProvider
         parent::boot();
 
         Route::bind('auth', function ($value) {
-            return \App\UserSip::where('sip_auth', $value)->first() ?? abort(404);
+            return \App\UserSip::where('sip_auth', $value)->first(['sip_address','sip_username','sip_password']) ?? abort(404);
         });
     }
 

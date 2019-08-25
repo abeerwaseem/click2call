@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -84,8 +84,11 @@
                                         <li style="padding-bottom: 10px">
                                             <a href="{{ url('/') }}">Dashboard</a>
                                         </li>
-                                        <li>
+                                        <li style="padding-bottom: 10px">
                                             <a href="{{ route('users') }}">Customers</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('add-setting') }}">Settings</a>
                                         </li>
                                     </ul>
                                 </div>
