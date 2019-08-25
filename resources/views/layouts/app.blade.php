@@ -10,14 +10,14 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('public/js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -43,7 +43,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
-                            @if (Route::has('register'))
+                            @if (Route::has('register') && false)
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
@@ -71,26 +71,27 @@
                 </div>
             </div>
         </nav>
-
         <main class="py-4">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-md-2">
-                        <div class="card">
-                            <div class="card-header">Menu</div>
+                    @if(\Auth::check())
+                        <div class="col-md-2">
+                            <div class="card">
+                                <div class="card-header">Menu</div>
 
-                            <div class="card-body">
-                                <ul style="list-style: none;padding: 0">
-                                    <li style="padding-bottom: 10px">
-                                        <a href="{{ url('/') }}">Dashboard</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('users') }}">Customers</a>
-                                    </li>
-                                </ul>
+                                <div class="card-body">
+                                    <ul style="list-style: none;padding: 0">
+                                        <li style="padding-bottom: 10px">
+                                            <a href="{{ url('/') }}">Dashboard</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('users') }}">Customers</a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endif
                     <div class="col-md-10">
                         @yield('content')
                     </div>   
