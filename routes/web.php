@@ -18,7 +18,7 @@ Route::get('/', function () {
 Route::get('user/validate/{auth}', function (App\UserSip $sip) {
 	$setting = App\Setting::get(['web_socket_url','outbound_url','ice_servers']);
 	return array('sip' => $sip, 'setting' => $setting);
-});
+})->middleware('cors');
 
 Auth::routes();
 
